@@ -1,0 +1,9 @@
+*.swp
+*.o
+*.out
+*.d
+tovog/
+.vscode
+so_long
+so_long_bonus
+valgrind-out.txt
