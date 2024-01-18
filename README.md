@@ -1,4 +1,4 @@
-# ❆ 42sp - So long
+# 🎮 42sp - So long
 
 <picture>
 	<img alt="so long" src="img/42_so_long.png">
