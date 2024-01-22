@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 03:46:51 by dande-je          #+#    #+#              #
-#    Updated: 2024/01/18 03:54:11 by dande-je         ###   ########.fr        #
+#    Updated: 2024/01/22 09:25:40 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #                                REQUIREMENTS                                  #
 #******************************************************************************#
 
-LIBFT_VERSION                   := 2.4.3
+LIBFT_VERSION                   := 2.4.7
 MLX42_VERSION                   := 2.3.3
 CMAKE_VERSION                   := 3.16
 
@@ -35,7 +35,7 @@ RESET                           := \033[0m
 
 SRCS_MAIN_DIR                   := src/
 SRCS_INTERNAL_DIR               := src/internal/
-INCS                            = src/ src/internal/ lib/42_libft/include/ lib/MLX42/include/
+INCS                            := src/ lib/42_libft/include/ lib/MLX42/include/
 BUILD_DIR                       := build/
 MLX42_DIR                       := lib/MLX42/
 MLX42_BUILD_DIR                 := lib/MLX42/build/
@@ -63,7 +63,8 @@ NAME                            = so_long
 NAME_BONUS                      = so_long_bonus
 
 SRCS_FILES                      += $(addprefix $(SRCS_MAIN_DIR), main.c)
-SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_utils.c)
+SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_utils.c \
+	ft_parse_map.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 
