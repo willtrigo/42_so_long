@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 03:46:51 by dande-je          #+#    #+#              #
-#    Updated: 2024/01/22 09:25:40 by dande-je         ###   ########.fr        #
+#    Updated: 2024/01/24 02:39:21 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,9 @@ NAME                            = so_long
 NAME_BONUS                      = so_long_bonus
 
 SRCS_FILES                      += $(addprefix $(SRCS_MAIN_DIR), main.c)
-SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_utils.c \
-	ft_parse_map.c)
+SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_canvas.c \
+	ft_parse.c \
+	ft_utils.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 

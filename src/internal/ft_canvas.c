@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_so_long.h                                       :+:      :+:    :+:   */
+/*   ft_canvas.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/24 08:47:23 by dande-je         ###   ########.fr       */
+/*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
+/*   Updated: 2024/01/24 08:58:49 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SO_LONG_H
-# define FT_SO_LONG_H
+#include "ft_canvas.h"
 
-# include "MLX42/MLX42.h"
-
-# define WIDTH 1920
-# define HEIGHT 995
-# define NAME_WINDOW "42sp - dande-je's so long | map - "
-# define COLUMN_INIT -1
-
-typedef struct s_canvas		t_canvas;
-struct s_canvas
+void	ft_create_canvas(char *map)
 {
-	mlx_t			*mlx;
-	mlx_image_t		*canvas;
-	mlx_texture_t	*icon;
-	char			*title_window;
-	char			*name;
-	int32_t			column;
-	int32_t			line;
-	char			*map;
-};
+	t_canvas	data;
 
-#endif
+	data.column = COLUMN_INIT;
+	data.line = 0;
+	ft_parse_map(map, &data);
+}
