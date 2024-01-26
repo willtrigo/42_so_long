@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_canvas.h                                        :+:      :+:    :+:   */
+/*   ft_clean.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 04:18:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 15:59:15 by dande-je         ###   ########.fr       */
+/*   Created: 2024/01/25 11:57:38 by dande-je          #+#    #+#             */
+/*   Updated: 2024/01/25 19:48:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CANVAS_H
-# define FT_CANVAS_H
+#ifndef FT_CLEAN_H
+# define FT_CLEAN_H
 
+# include "ft_stdlib.h"
 # include "ft_so_long.h"
-# include "ft_parse.h"
+# include "ft_utils.h"
 
-void	ft_create_canvas(char *map);
+void	ft_clean(t_canvas *data);
+void	ft_clean_buf(int32_t fd, char *check_map, char *message);
 
 #endif

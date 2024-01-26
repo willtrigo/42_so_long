@@ -6,11 +6,13 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/24 09:16:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/25 22:16:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_parse.h"
+#include "internal/ft_parse.h"
+
+static void	ft_parse_buf(int32_t fd, char *buf, t_canvas *data);
 
 void	ft_parse_arguments(int32_t argc, char *map)
 {
@@ -37,37 +39,39 @@ void	ft_parse_arguments(int32_t argc, char *map)
 	}
 	close(fd);
 }
-#include <stdio.h>
+
 void	ft_parse_map(char *map, t_canvas *data)
 {
 	int32_t	fd;
 	char	*buf;
-	char	*map_temp;
 
+	buf = NULL;
 	fd = open(map, O_RDONLY, 0666);
 	if (fd <= FAIL)
 		ft_read_output_error(fd, "Invalid map - Map file is corrupted.");
+	ft_parse_buf(fd, buf, data);
+	close(fd);
+}
+
+static void	ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
+{
+	char	*check_map_valid;
+	char	*check_map;
+	char	*check_map_temp;
+
 	buf = get_next_line(fd);
-	data->map = ft_strdup("");
+	check_map = ft_strdup("");
+	data->column = ft_strlen(buf);
 	while (buf)
 	{
-		// printf("%s", buf);
-		if (data->column == COLUMN_INIT)
-		{
-			data->column = ft_strlen(buf);
-		}
-		//map_temp = malloc(sizeof(char) + ft_strlen(data->map) + BYTE);
-		map_temp = data->map;
-		//free(data->map);
-		data->map = ft_strjoin(map_temp, buf);
-		free(map_temp);
+		ft_is_map_valid(buf, &check_map_valid, data);
+		check_map_temp = check_map;
+		check_map = ft_strjoin(check_map_temp, buf);
+		free(check_map_temp);
 		free(buf);
+		if (check_map_valid)
+			ft_clean_buf(fd, check_map, check_map_valid);
 		buf = get_next_line(fd);
 		data->line++;
 	}
-	printf("%s\n", data->map);
-	printf("%d - column | %d - line\n", data->column, data->line);
-	close(fd);
-	//free(buf);
-	free(data->map);
 }

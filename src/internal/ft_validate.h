@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_canvas.h                                        :+:      :+:    :+:   */
+/*   ft_validate.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 04:18:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 15:59:15 by dande-je         ###   ########.fr       */
+/*   Created: 2024/01/25 12:25:21 by dande-je          #+#    #+#             */
+/*   Updated: 2024/01/25 21:52:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CANVAS_H
-# define FT_CANVAS_H
+#ifndef FT_VALIDATE_H
+# define FT_VALIDATE_H
 
+# include "ft_non_standard/ft_non_standard.h"
+# include "ft_string.h"
 # include "ft_so_long.h"
-# include "ft_parse.h"
 
-void	ft_create_canvas(char *map);
+# define TRUE 1
+# define FALSE 0
+
+void	ft_is_map_valid(char *column, char **message, t_canvas *data);
 
 #endif
