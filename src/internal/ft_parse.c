@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 22:16:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/26 01:36:04 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_parse_arguments(int32_t argc, char *map)
 		ft_output_error("Invalid map - Extension must be .ber.");
 	fd = open(map, O_RDONLY, 0666);
 	file = read(fd, buf, BUF_SIZE);
-	if (fd <= FAIL || *buf != FLOOR)
+	if (fd <= FAIL || *buf != WALL)
 	{
 		if (fd <= FAIL)
 			ft_read_output_error(fd, "Invalid map - Map file is empty.");
@@ -64,7 +64,7 @@ static void	ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
 	data->column = ft_strlen(buf);
 	while (buf)
 	{
-		ft_is_map_valid(buf, &check_map_valid, data);
+		ft_is_map_valid(buf, &check_map_valid, data, FALSE);
 		check_map_temp = check_map;
 		check_map = ft_strjoin(check_map_temp, buf);
 		free(check_map_temp);
@@ -74,4 +74,8 @@ static void	ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
 		buf = get_next_line(fd);
 		data->line++;
 	}
+	ft_is_map_valid(&check_map[data->line * data->column - data->column], \
+		&check_map_valid, data, TRUE);
+	if (check_map_valid)
+		ft_clean_buf(fd, NULL, check_map_valid);
 }

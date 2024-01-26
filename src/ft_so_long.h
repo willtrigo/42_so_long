@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 22:31:23 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/26 00:28:25 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define WIDTH 1920
 # define HEIGHT 995
 # define NAME_WINDOW "42sp - dande-je's so long | map - "
+# define FLOOR '0'
+# define WALL '1'
+# define TRUE 1
+# define FALSE 0
 
 typedef struct s_canvas		t_canvas;
 struct s_canvas

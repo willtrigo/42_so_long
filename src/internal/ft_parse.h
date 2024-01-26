@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 22:33:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/26 00:02:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define ETE_LEN 4
 # define BUF_SIZE 1
 # define FAIL -1
-# define FLOOR '1'
 
 void	ft_parse_arguments(int32_t argc, char *map);
 void	ft_parse_map(char *map, t_canvas *data);
