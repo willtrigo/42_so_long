@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:21 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/26 00:45:34 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/27 20:26:10 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include "ft_string.h"
 # include "ft_so_long.h"
 
-# define COLUMN_MINIMUM 5
+# define COLUMN_MINIMUM 3
+# define ELEMENT_MINIMUM 1
 
 void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
 			int32_t last_line);

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 15:24:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:30:25 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,8 @@ void	ft_create_canvas(char *map)
 
 	data.column = 0;
 	data.line = 0;
+	data.player = 0;
+	data.exit = 0;
+	data.collectable = 0;
 	ft_parse_map(map, &data);
 }

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/26 00:28:25 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/27 19:21:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ struct s_canvas
 	char			*name;
 	int32_t			column;
 	int32_t			line;
+	int8_t			player;
+	int8_t			exit;
+	int16_t			collectable;
 	char			*map;
 };
 
