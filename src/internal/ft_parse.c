@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/26 01:36:04 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/26 23:06:47 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	ft_parse_arguments(int32_t argc, char *map)
 	{
 		if (fd <= FAIL)
 			ft_read_output_error(fd, "Invalid map - Map file is empty.");
-		else if (*buf != FLOOR)
-			ft_read_output_error(fd, "Invalid map - Map file is empty.");
+		else if (*buf != WALL)
+			ft_read_output_error(fd, \
+				"Invalid map - Map is not surrounded by walls.");
 	}
 	close(fd);
 }
