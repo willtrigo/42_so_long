@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_canvas.h                                        :+:      :+:    :+:   */
+/*   ft_build.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 04:18:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/28 00:36:36 by dande-je         ###   ########.fr       */
+/*   Created: 2024/01/28 00:35:21 by dande-je          #+#    #+#             */
+/*   Updated: 2024/01/28 00:38:55 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CANVAS_H
-# define FT_CANVAS_H
+#include "internal/ft_build.h"
 
-# include "ft_so_long.h"
-# include "internal/ft_parse.h"
-
-void	ft_create_canvas(char *map);
-
-#endif
+void	ft_build_map(char *map)
+{
+	(void)map;
+}

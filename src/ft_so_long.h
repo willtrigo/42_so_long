@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/27 19:21:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/28 01:13:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef struct s_map		t_map;
+struct s_map
+{
+	t_map	*next;
+	t_map	*prev;
+	t_map	*up;
+	t_map	*down;
+	char	content;
+	int8_t	enable;
+};
+
 typedef struct s_canvas		t_canvas;
 struct s_canvas
 {
@@ -36,7 +47,7 @@ struct s_canvas
 	int8_t			player;
 	int8_t			exit;
 	int16_t			collectable;
-	char			*map;
+	t_map			*map;
 };
 
 #endif
