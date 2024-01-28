@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/26 00:02:58 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/28 01:13:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 # include "ft_non_standard/ft_get_next_line.h"
 # include "ft_string.h"
 # include "ft_so_long.h"
-# include "ft_validate.h"
-# include "ft_utils.h"
-# include "ft_clean.h"
+# include "internal/ft_build.h"
+# include "internal/ft_clean.h"
+# include "internal/ft_utils.h"
+# include "internal/ft_validate.h"
 
 # define LIMIT_ARGS 2
 # define ETE ".ber"
 # define ETE_LEN 4
-# define BUF_SIZE 1
+# define BUF_SIZE 0x01
 # define FAIL -1
 
 void	ft_parse_arguments(int32_t argc, char *map);
