@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:21 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/27 20:26:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/28 01:12:54 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define ELEMENT_MINIMUM 1
 
 void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
-			int32_t last_line);
-int32_t	ft_check_wall(char *column, t_canvas *data, int32_t last_line);
+			int8_t last_line);
+int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line);
 
 #endif
