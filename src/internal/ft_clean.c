@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:57:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/26 01:00:20 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/28 03:02:06 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	ft_clean(t_canvas *data)
 void	ft_clean_buf(int32_t fd, char *check_map, char *message)
 {
 	close(fd);
-	if (check_map)
-		free(check_map);
+	free(check_map);
 	ft_output_message(message);
 	free(message);
 	ft_exit_error();
