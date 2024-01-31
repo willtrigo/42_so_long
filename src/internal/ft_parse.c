@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/28 03:12:35 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/31 01:17:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/ft_parse.h"
 
 static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data);
+static void	ft_build_map_lst(t_canvas *data, int32_t map_size);
 
 void	ft_parse_arguments(int32_t argc, char *map)
 {
@@ -41,16 +42,24 @@ void	ft_parse_arguments(int32_t argc, char *map)
 void	ft_parse_map(char *map, t_canvas *data)
 {
 	int32_t	fd;
+	int32_t	i;
+	int32_t	map_size;
 	char	*buf;
 
 	buf = NULL;
+	i = -1;
 	fd = open(map, O_RDONLY, 0666);
 	if (fd <= FAIL)
 		ft_read_output_error(fd, "Invalid map - Map file is corrupted.");
 	buf = ft_parse_buf(fd, buf, data);
 	close(fd);
-	ft_build_map(buf);
+	data->column--;
+	while (buf[++i])
+		if (buf[i] != '\n')
+			ft_node_map_add(&data->map, ft_node_map_new(buf[i]));
+	map_size = ft_node_map_size(data->map);
 	free(buf);
+	ft_build_map_lst(data, map_size);
 }
 
 static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
@@ -79,4 +88,30 @@ static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
 	if (check_map_valid)
 		ft_clean_buf(fd, check_map, check_map_valid);
 	return (check_map);
+}
+
+static void	ft_build_map_lst(t_canvas *data, int32_t map_size)
+{
+	int32_t	map_pos;
+	t_map	*map_init;
+
+	map_pos = 0;
+	map_init = NULL;
+	if (map_size != data->column * data->line)
+	{
+		ft_clean_map_lst(data->map);
+		ft_output_error("Invalid map - Map allocation failed.");
+	}
+	map_init = data->map;
+	while (data->map)
+	{
+		data->map->down = ft_get_pos(data->map, data->column);
+		if (map_pos > data->column - 2)
+			data->map->up = ft_get_pos(map_init, map_pos - data->column + 1);
+		if (map_pos != 0)
+			data->map->prev = ft_get_pos(map_init, map_pos - 1);
+		map_pos++;
+		data->map = data->map->next;
+	}
+	data->map = map_init;
 }

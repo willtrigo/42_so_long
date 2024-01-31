@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/28 01:13:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/01/31 01:15:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "ft_non_standard/ft_get_next_line.h"
 # include "ft_string.h"
 # include "ft_so_long.h"
-# include "internal/ft_build.h"
+# include "internal/ft_lst.h"
 # include "internal/ft_clean.h"
 # include "internal/ft_utils.h"
 # include "internal/ft_validate.h"
