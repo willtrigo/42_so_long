@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 03:46:51 by dande-je          #+#    #+#              #
-#    Updated: 2024/01/31 01:16:23 by dande-je         ###   ########.fr        #
+#    Updated: 2024/02/01 06:05:04 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ NAME_BONUS                      = so_long_bonus
 SRCS_FILES                      += $(addprefix $(SRCS_MAIN_DIR), main.c)
 SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_canvas.c \
 	ft_clean.c \
+	ft_flood_fill.c \
 	ft_lst.c \
 	ft_parse.c \
 	ft_utils.c \

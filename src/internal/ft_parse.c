@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/31 01:17:31 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/01 06:41:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_parse_arguments(int32_t argc, char *map)
 			"Invalid map - Map is not surrounded by walls.");
 	close(fd);
 }
-
+#include <stdio.h>
 void	ft_parse_map(char *map, t_canvas *data)
 {
 	int32_t	fd;
@@ -60,6 +60,22 @@ void	ft_parse_map(char *map, t_canvas *data)
 	map_size = ft_node_map_size(data->map);
 	free(buf);
 	ft_build_map_lst(data, map_size);
+	printf("%c content\n", data->player_pos->chr);
+	ft_flood_fill(data->player_pos, RIGHT);
+	// printf("%c content\n", data->player_pos->chr);
+	// ft_flood_fill(data->player_pos, LEFT);
+	printf("%c content\n", data->player_pos->chr);
+	i = 0;
+	while (data->map)
+	{
+		printf("%c ", data->map->chr);
+		if (++i == data->column)
+		{
+			printf("\n");
+			i = 0;
+		}
+		data->map = data->map->next;
+	}
 }
 
 static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
@@ -105,6 +121,8 @@ static void	ft_build_map_lst(t_canvas *data, int32_t map_size)
 	map_init = data->map;
 	while (data->map)
 	{
+		if (data->map->chr == 'P')
+			data->player_pos = data->map;
 		data->map->down = ft_get_pos(data->map, data->column);
 		if (map_pos > data->column - 2)
 			data->map->up = ft_get_pos(map_init, map_pos - data->column + 1);

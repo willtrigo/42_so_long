@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:21 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/28 01:12:54 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/01 05:58:28 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_non_standard/ft_non_standard.h"
 # include "ft_string.h"
 # include "ft_so_long.h"
+# include "ft_utils.h"
 
 # define COLUMN_MINIMUM 3
 # define ELEMENT_MINIMUM 1

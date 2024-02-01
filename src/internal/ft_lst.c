@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 01:09:27 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/31 01:10:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/01 05:43:21 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_node_map_add(t_map **node_map, t_map *node_map_new)
 	}
 }
 
-t_map	*ft_node_map_new(char content)
+t_map	*ft_node_map_new(char chr)
 {
 	t_map	*node_map_new;
 
@@ -40,7 +40,7 @@ t_map	*ft_node_map_new(char content)
 		free(node_map_new);
 		return (NULL);
 	}
-	node_map_new->content = content;
+	node_map_new->chr = chr;
 	return (node_map_new);
 }
 

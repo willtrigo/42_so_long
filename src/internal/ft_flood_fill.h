@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_canvas.c                                        :+:      :+:    :+:   */
+/*   ft_flood_fill.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/01 06:35:58 by dande-je         ###   ########.fr       */
+/*   Created: 2024/02/01 05:57:13 by dande-je          #+#    #+#             */
+/*   Updated: 2024/02/01 06:01:50 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_canvas.h"
+#ifndef FT_FLOOD_FILL_H
+# define FT_FLOOD_FILL_H
 
-void	ft_create_canvas(char *map)
-{
-	t_canvas	data;
+# include "MLX42/MLX42.h"
+# include "ft_so_long.h"
 
-	data.column = 0;
-	data.line = 0;
-	data.player = 0;
-	data.exit = 0;
-	data.collectable = 0;
-	data.map = NULL;
-	ft_parse_map(map, &data);
-	//ft_clean_map_lst(data.map);
-}
+void	ft_flood_fill(t_map *map_pos, int8_t shift);
+
+#endif

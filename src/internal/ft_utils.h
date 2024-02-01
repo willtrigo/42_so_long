@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:45:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/25 21:17:14 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/01 06:00:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_UTILS_H
 
 # include "ft_non_standard/ft_non_standard.h"
+# include "ft_so_long.h"
 
 void	ft_output_message(char *message);
 void	ft_exit_error(void);

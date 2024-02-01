@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/28 01:13:09 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/01 06:39:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define WALL '1'
 # define TRUE 1
 # define FALSE 0
+# define BYTE 1
+# define RIGHT 1
+# define LEFT 2
+# define ROT3 3
 
 typedef struct s_map		t_map;
 struct s_map
@@ -30,7 +34,7 @@ struct s_map
 	t_map	*prev;
 	t_map	*up;
 	t_map	*down;
-	char	content;
+	char	chr;
 	int8_t	enable;
 };
 
@@ -48,6 +52,7 @@ struct s_canvas
 	int8_t			exit;
 	int16_t			collectable;
 	t_map			*map;
+	t_map			*player_pos;
 };
 
 #endif

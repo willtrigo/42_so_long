@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:24 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/31 01:15:29 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/01 06:04:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "internal/ft_clean.h"
 # include "internal/ft_utils.h"
 # include "internal/ft_validate.h"
+# include "internal/ft_flood_fill.h"
 
 # define LIMIT_ARGS 2
 # define ETE ".ber"
