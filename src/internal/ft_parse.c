@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/01 06:41:16 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/02 06:59:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_parse_arguments(int32_t argc, char *map)
 			"Invalid map - Map is not surrounded by walls.");
 	close(fd);
 }
-#include <stdio.h>
+
 void	ft_parse_map(char *map, t_canvas *data)
 {
 	int32_t	fd;
@@ -60,22 +60,9 @@ void	ft_parse_map(char *map, t_canvas *data)
 	map_size = ft_node_map_size(data->map);
 	free(buf);
 	ft_build_map_lst(data, map_size);
-	printf("%c content\n", data->player_pos->chr);
 	ft_flood_fill(data->player_pos, RIGHT);
-	// printf("%c content\n", data->player_pos->chr);
-	// ft_flood_fill(data->player_pos, LEFT);
-	printf("%c content\n", data->player_pos->chr);
-	i = 0;
-	while (data->map)
-	{
-		printf("%c ", data->map->chr);
-		if (++i == data->column)
-		{
-			printf("\n");
-			i = 0;
-		}
-		data->map = data->map->next;
-	}
+	ft_check_flood_fill(data, 0, 0);
+	ft_flood_fill(data->player_pos, LEFT);
 }
 
 static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data)

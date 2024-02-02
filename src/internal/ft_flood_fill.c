@@ -6,13 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 05:57:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/01 06:39:50 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/02 06:13:46 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/ft_flood_fill.h"
 
 static void	ft_rot3(t_map *map, int8_t shift);
+static void	ft_flood_fill_error(t_canvas *data, char *message);
 
 void	ft_flood_fill(t_map *map_pos, int8_t shift)
 {
@@ -39,4 +40,31 @@ static void	ft_rot3(t_map *map, int8_t shift)
 		ft_flood_fill(map->next, shift);
 	if (map->prev)
 		ft_flood_fill(map->prev, shift);
+}
+
+void	ft_check_flood_fill(t_canvas *data, int16_t collectable, \
+			int16_t exit_door)
+{
+	t_map	*map_temp;
+
+	map_temp = data->map;
+	while (map_temp)
+	{
+		if (map_temp->chr == 'C')
+			collectable++;
+		if (map_temp->chr == 'E')
+			exit_door++;
+		map_temp = map_temp->next;
+	}
+	if (collectable != 0)
+		ft_flood_fill_error(data, \
+			"Invalid map - Collectables has no valid path.");
+	if (exit_door != 0)
+		ft_flood_fill_error(data, "Invalid map - Exit has no valid path.");
+}
+
+static void	ft_flood_fill_error(t_canvas *data, char *message)
+{
+	ft_clean_map_lst(data->map);
+	ft_output_error(message);
 }

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:45:09 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/01 05:59:57 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/02 06:59:40 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ void	ft_exit_error(void)
 {
 	exit(EXIT_FAILURE);
 }
-
