@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/02 06:57:33 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/03 08:17:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,15 @@ void	ft_create_canvas(char *map)
 	data.player = 0;
 	data.exit = 0;
 	data.collectable = 0;
+	data.tile_size = 40;
 	data.map = NULL;
 	ft_parse_map(map, &data);
-	ft_clean_map_lst(data.map);
+	data.mlx = mlx_init(1920, 1080, "42sp - dande-je's so_long", false);
+	ft_load_assets(&data);
+	ft_render_game(&data);
+	mlx_set_icon(data.mlx, data.icon);
+	mlx_key_hook(data.mlx, (mlx_keyfunc)ft_key_hook, &data);
+	mlx_loop(data.mlx);
+	ft_clean(&data);
+	mlx_terminate(data.mlx);
 }

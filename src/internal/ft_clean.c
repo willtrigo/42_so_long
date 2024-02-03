@@ -6,18 +6,21 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:57:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/01/31 00:43:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/03 10:50:36 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/ft_clean.h"
 
+static void	ft_clean_so_long_assets(t_canvas *data);
 static void	ft_clean_so_long_struct(t_canvas *data);
 
 void	ft_clean(t_canvas *data)
 {
+	ft_clean_so_long_assets(data);
+	mlx_delete_image(data->mlx, data->canvas_wall);
+	mlx_delete_image(data->mlx, data->canvas_floor);
 	ft_clean_so_long_struct(data);
-	mlx_delete_image(data->mlx, data->canvas);
 }
 
 void	ft_clean_buf(int32_t fd, char *check_map, char *message)
@@ -44,7 +47,14 @@ void	ft_clean_map_lst(t_map *map_lst)
 	map_lst = NULL;
 }
 
+static void	ft_clean_so_long_assets(t_canvas *data)
+{
+	mlx_delete_texture(data->texture_wall);
+	mlx_delete_texture(data->texture_floor);
+	mlx_delete_texture(data->icon);
+}
+
 static void	ft_clean_so_long_struct(t_canvas *data)
 {
-	free(data->map);
+	ft_clean_map_lst(data->map);
 }

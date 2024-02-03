@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_canvas.h                                        :+:      :+:    :+:   */
+/*   ft_render.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 04:18:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/03 07:39:11 by dande-je         ###   ########.fr       */
+/*   Created: 2024/02/03 03:45:07 by dande-je          #+#    #+#             */
+/*   Updated: 2024/02/03 08:32:20 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CANVAS_H
-# define FT_CANVAS_H
+#ifndef FT_RENDER_H
+# define FT_RENDER_H
 
+# include "MLX42/MLX42.h"
 # include "ft_so_long.h"
-# include "internal/ft_parse.h"
-# include "internal/ft_assets.h"
-# include "internal/ft_render.h"
-# include "internal/ft_control.h"
 
-void	ft_create_canvas(char *map);
+void	ft_render_game(t_canvas *data);
+void	ft_render_texture(t_canvas *data, mlx_image_t *canvas);
 
 #endif

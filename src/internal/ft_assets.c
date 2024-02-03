@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_canvas.h                                        :+:      :+:    :+:   */
+/*   ft_assets.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 04:18:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/03 07:39:11 by dande-je         ###   ########.fr       */
+/*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
+/*   Updated: 2024/02/03 10:34:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CANVAS_H
-# define FT_CANVAS_H
+#include "internal/ft_assets.h"
 
-# include "ft_so_long.h"
-# include "internal/ft_parse.h"
-# include "internal/ft_assets.h"
-# include "internal/ft_render.h"
-# include "internal/ft_control.h"
-
-void	ft_create_canvas(char *map);
-
-#endif
+void	ft_load_assets(t_canvas *data)
+{
+	data->icon = mlx_load_png("./textures/assets/42_icon.png");
+	data->texture_floor = mlx_load_png("./textures/floor.png");
+	data->texture_wall = mlx_load_png("./textures/wall.png");
+}
