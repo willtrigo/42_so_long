@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/01 06:02:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/04 00:25:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
 		*message = ft_strdup("Invalid map - Map need at least a player.");
 	else if (last_line && data->exit == 0)
 		*message = ft_strdup("Invalid map - Map need at least an exit.");
-	else if (last_line && data->collectable == 0)
+	else if (last_line && data->coll == 0)
 		*message = ft_strdup("Invalid map - Map need at least a collectable.");
 }
 
@@ -71,7 +71,7 @@ static void	ft_check_elements(char *column, char **message, t_canvas *data)
 		if (column[i] == 'P')
 			data->player++;
 		else if (column[i] == 'C')
-			data->collectable++;
+			data->coll++;
 		else if (column[i] == 'E')
 			data->exit++;
 		if (data->player > ELEMENT_MINIMUM)

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/03 08:38:31 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/04 00:26:02 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define FLOOR '0'
 # define WALL '1'
 # define PLAYER 'P'
-# define COLLECTABLE 'C'
+# define COLL 'C'
 # define EXIT_DOOR 'E'
 # define TRUE 1
 # define FALSE 0
@@ -39,6 +39,7 @@ struct s_map
 	t_map	*down;
 	char	chr;
 	int8_t	enable;
+	int8_t	active;
 };
 
 typedef struct s_canvas		t_canvas;
@@ -49,19 +50,19 @@ struct s_canvas
 	mlx_image_t		*canvas_wall;
 	mlx_image_t		*canvas_player;
 	mlx_image_t		*canvas_exit;
+	mlx_image_t		*canvas_coll;
 	mlx_texture_t	*texture_floor;
 	mlx_texture_t	*texture_wall;
 	mlx_texture_t	*texture_player;
 	mlx_texture_t	*texture_exit;
+	mlx_texture_t	*texture_coll;
 	mlx_texture_t	*icon;
-	char			*title_window;
-	char			*name;
 	int8_t			tile_size;
 	int32_t			column;
 	int32_t			line;
 	int8_t			player;
 	int8_t			exit;
-	int16_t			collectable;
+	int16_t			coll;
 	t_map			*map;
 	t_map			*player_pos;
 };

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/03 11:06:43 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/04 00:32:13 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,12 @@ static void	ft_build_map_lst(t_canvas *data, int32_t map_size, t_map *map)
 	}
 	while (map)
 	{
+		map->active = FALSE;
 		if (map->chr == 'P')
+		{
+			map->active = TRUE;
 			data->player_pos = map;
+		}
 		map->down = ft_get_pos(map, data->column);
 		if (map_pos > data->column - 2)
 			map->up = ft_get_pos(data->map, map_pos - data->column + 1);
