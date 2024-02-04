@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/04 00:32:13 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/04 05:51:01 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_parse_map(char *map, t_canvas *data)
 	ft_flood_fill(data->player_pos, RIGHT);
 	ft_check_flood_fill(data, 0, 0);
 	ft_flood_fill(data->player_pos, LEFT);
+	data->player_pos->chr = '0';
 }
 
 static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data)
