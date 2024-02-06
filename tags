@@ -4099,7 +4099,7 @@ ft_memcpy	lib/42_libft/src/ft_string/ft_memcpy.c	/^void	*ft_memcpy(void *dest, c
 ft_memmove	lib/42_libft/src/ft_string/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t n)$/;"	f	typeref:typename:void *
 ft_memset	lib/42_libft/src/ft_string/ft_memset.c	/^void	*ft_memset(void *s, int c, size_t n)$/;"	f	typeref:typename:void *
 ft_output_error	src/internal/ft_utils.c	/^void	ft_output_error(char *message)$/;"	f	typeref:typename:void
-ft_output_message	src/internal/ft_utils.c	/^void	ft_output_message(char *message)$/;"	f	typeref:typename:void
+ft_output_error_message	src/internal/ft_utils.c	/^void	ft_output_error_message(char *message)$/;"	f	typeref:typename:void
 ft_parse_arguments	src/internal/ft_parse.c	/^void	ft_parse_arguments(int32_t argc, char *map)$/;"	f	typeref:typename:void
 ft_parse_buf	src/internal/ft_parse.c	/^static void	ft_parse_buf(int32_t fd, char *buf, t_canvas *data)$/;"	f	typeref:typename:void	file:
 ft_parse_comb_init	lib/42_libft/src/ft_non_standard/ft_printf/utils/parse_utils/ft_parse_combination.c	/^static t_parse_comb_struct	ft_parse_comb_init(void)$/;"	f	typeref:typename:t_parse_comb_struct	file:

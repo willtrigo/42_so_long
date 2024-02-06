@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/04 00:25:13 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 07:04:44 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ static void	ft_check_elements(char *column, char **message, t_canvas *data)
 	i = -1;
 	while (column[++i])
 	{
-		if (column[i] == 'P')
+		if (column[i] == PLAYER)
 			data->player++;
-		else if (column[i] == 'C')
+		else if (column[i] == COLL)
 			data->coll++;
-		else if (column[i] == 'E')
+		else if (column[i] == EXIT_DOOR)
 			data->exit++;
 		if (data->player > ELEMENT_MINIMUM)
 		{

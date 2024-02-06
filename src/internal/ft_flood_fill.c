@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 05:57:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/02 06:13:46 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 07:02:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	ft_flood_fill_error(t_canvas *data, char *message);
 
 void	ft_flood_fill(t_map *map_pos, int8_t shift)
 {
-	if ((shift == RIGHT) && (map_pos->chr == 'P' || map_pos->chr == '0' \
-		|| map_pos->chr == 'C' || map_pos->chr == 'E'))
+	if ((shift == RIGHT) && (map_pos->chr == PLAYER || map_pos->chr == FLOOR \
+		|| map_pos->chr == COLL || map_pos->chr == EXIT_DOOR))
 		ft_rot3(map_pos, shift);
-	else if ((shift == LEFT) && (map_pos->chr == ('P' + ROT3) \
-		|| map_pos->chr == ('0' + ROT3) || map_pos->chr == ('C' + ROT3) \
-		|| map_pos->chr == ('E' + ROT3)))
+	else if ((shift == LEFT) && (map_pos->chr == (PLAYER + ROT3) \
+		|| map_pos->chr == (FLOOR + ROT3) || map_pos->chr == (COLL + ROT3) \
+		|| map_pos->chr == (EXIT_DOOR + ROT3)))
 		ft_rot3(map_pos, shift);
 }
 
@@ -50,9 +50,9 @@ void	ft_check_flood_fill(t_canvas *data, int16_t collectable, \
 	map_temp = data->map;
 	while (map_temp)
 	{
-		if (map_temp->chr == 'C')
+		if (map_temp->chr == COLL)
 			collectable++;
-		if (map_temp->chr == 'E')
+		if (map_temp->chr == EXIT_DOOR)
 			exit_door++;
 		map_temp = map_temp->next;
 	}

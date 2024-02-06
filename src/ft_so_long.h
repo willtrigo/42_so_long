@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/04 00:26:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 08:01:19 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@
 # define BYTE 1
 # define RIGHT 1
 # define LEFT 2
+# define UP 3
+# define DOWN 4
 # define ROT3 3
+# define CYAN 0
+# define GREEN 2
 
 typedef struct s_map		t_map;
 struct s_map
@@ -63,8 +67,10 @@ struct s_canvas
 	int8_t			player;
 	int8_t			exit;
 	int16_t			coll;
+	int32_t			move;
 	t_map			*map;
 	t_map			*player_pos;
+	t_map			*exit_pos;
 };
 
 #endif

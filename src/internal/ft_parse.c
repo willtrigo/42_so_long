@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/06 06:19:05 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 07:17:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static char	*ft_parse_buf(int32_t fd, char *buf, t_canvas *data);
 static void	ft_build_map_lst(t_canvas *data, int32_t map_size, t_map *map);
+static void	ft_check_tile(t_map *map, t_canvas *data);
 
 void	ft_parse_arguments(int32_t argc, char *map)
 {
@@ -106,12 +107,7 @@ static void	ft_build_map_lst(t_canvas *data, int32_t map_size, t_map *map)
 	}
 	while (map)
 	{
-		map->active = FALSE;
-		if (map->chr == 'P')
-		{
-			map->active = TRUE;
-			data->player_pos = map;
-		}
+		ft_check_tile(map, data);
 		map->down = ft_get_pos(map, data->column);
 		if (map_pos > data->column - 2)
 			map->up = ft_get_pos(data->map, map_pos - data->column);
@@ -120,4 +116,21 @@ static void	ft_build_map_lst(t_canvas *data, int32_t map_size, t_map *map)
 		map_pos++;
 		map = map->next;
 	}
+}
+
+static void	ft_check_tile(t_map *map, t_canvas *data)
+{
+	map->active = FALSE;
+	if (map->chr == PLAYER)
+	{
+		map->active = TRUE;
+		data->player_pos = map;
+	}
+	else if (map->chr == EXIT_DOOR)
+	{
+		map->enable = FALSE;
+		data->exit_pos = map;
+	}
+	else if (map->chr == COLL)
+		map->enable = TRUE;
 }

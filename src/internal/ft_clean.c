@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:57:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/04 00:43:46 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 07:33:09 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_clean_buf(int32_t fd, char *check_map, char *message)
 {
 	close(fd);
 	free(check_map);
-	ft_output_message(message);
+	ft_output_error_message(message);
 	free(message);
 	ft_exit_error();
 }

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:01:00 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/03 04:06:04 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 05:17:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "MLX42/MLX42.h"
 # include "ft_so_long.h"
 
-void	ft_load_assets(t_canvas *data);
+void	ft_handle_assets(t_canvas *data);
+void	ft_reload_assets(t_canvas *data, mlx_texture_t **texture, \
+	mlx_image_t **canvas);
 
 #endif
