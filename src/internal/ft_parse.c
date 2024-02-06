@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/06 07:17:00 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/06 11:55:58 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_parse_arguments(int32_t argc, char *map)
 		ft_output_error("Invalid map - Extension must be .ber.");
 	fd = open(map, O_RDONLY, 0666);
 	file = read(fd, buf, BUF_SIZE);
-	if (fd <= FAIL || *buf != WALL)
+	if (file && (fd <= FAIL || *buf != WALL))
 		ft_read_output_error(fd, "Invalid map - Map file not exist.");
 	if (*buf != WALL)
 		ft_read_output_error(fd, \
