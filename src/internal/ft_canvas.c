@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/06 04:52:23 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/08 09:34:37 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_create_canvas(char *map)
 	data.coll = 0;
 	data.tile_size = 40;
 	data.move = 0;
+	data.fd = 0;
 	data.map = NULL;
 	ft_parse_map(map, &data);
 	data.mlx = mlx_init(1920, 1080, "42sp - dande-je's so_long", false);

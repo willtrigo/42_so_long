@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/06 08:01:19 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/08 09:34:23 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ struct s_canvas
 	mlx_texture_t	*texture_exit;
 	mlx_texture_t	*texture_coll;
 	mlx_texture_t	*icon;
-	int8_t			tile_size;
+	int32_t			fd;
 	int32_t			column;
 	int32_t			line;
-	int8_t			player;
-	int8_t			exit;
-	int16_t			coll;
 	int32_t			move;
+	int8_t			tile_size;
+	int8_t			player;
+	int16_t			coll;
+	int8_t			exit;
 	t_map			*map;
 	t_map			*player_pos;
 	t_map			*exit_pos;
