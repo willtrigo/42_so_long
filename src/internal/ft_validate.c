@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/09 08:23:36 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/09 10:32:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
 		*message = ft_strdup("Invalid map - Map need at least an exit.");
 	else if (last_line && data->coll == 0)
 		*message = ft_strdup("Invalid map - Map need at least a collectable.");
-	else if (last_line && data->floor == 0)
-		*message = ft_strdup("Invalid map - Map need at least a floor.");
 }
 
 int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line)
@@ -76,8 +74,6 @@ static void	ft_check_elements(char *column, char **message, t_canvas *data)
 			data->coll++;
 		else if (column[i] == EXIT_DOOR)
 			data->exit++;
-		else if (column[i] == FLOOR)
-			data->floor++;
 		if (data->player > ELEMENT_MINIMUM)
 		{
 			*message = ft_strdup("Invalid map - Too many players.");
