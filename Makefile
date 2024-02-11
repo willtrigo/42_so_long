@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 03:46:51 by dande-je          #+#    #+#              #
-#    Updated: 2024/02/09 11:08:52 by dande-je         ###   ########.fr        #
+#    Updated: 2024/02/11 11:18:15 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,7 @@ SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_assets.c
 	ft_parse.c \
 	ft_render.c \
 	ft_utils.c \
-	ft_validate.c \
-	ft_window.c)
+	ft_validate.c)
 
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
 
