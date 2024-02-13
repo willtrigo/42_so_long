@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 03:46:51 by dande-je          #+#    #+#              #
-#    Updated: 2024/02/11 11:18:15 by dande-je         ###   ########.fr        #
+#    Updated: 2024/02/13 20:22:14 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ RESET                           := \033[0m
 
 SRCS_MAIN_DIR                   := src/
 SRCS_INTERNAL_DIR               := src/internal/
-INCS                            := src/ lib/42_libft/include/ lib/MLX42/include/
+SRCS_MAIN_BONUS_DIR             := bonus/
+SRCS_INTERNAL_BONUS_DIR         := bonus/internal/
+INCS                            := src/ bonus bonus/ lib/42_libft/include/ lib/MLX42/include/
 BUILD_DIR                       := build/
 MLX42_DIR                       := lib/MLX42/
 MLX42_BUILD_DIR                 := lib/MLX42/build/
@@ -74,7 +76,21 @@ SRCS_FILES                      += $(addprefix $(SRCS_INTERNAL_DIR), ft_assets.c
 	ft_utils.c \
 	ft_validate.c)
 
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_MAIN_BONUS_DIR), main.c)
+SRCS_BONUS_FILES                += $(addprefix $(SRCS_INTERNAL_BONUS_DIR), ft_assets_bonus.c \
+	ft_canvas_bonus.c \
+	ft_clean_bonus.c \
+	ft_control_bonus.c \
+	ft_flood_fill_bonus.c \
+	ft_lst_bonus.c \
+	ft_parse_bonus.c \
+	ft_render_bonus.c \
+	ft_utils_bonus.c \
+	ft_validate_bonus.c)
+
 OBJS                            += $(SRCS_FILES:%.c=$(BUILD_DIR)%.o)
+
+OBJS_BONUS                      += $(SRCS_BONUS_FILES:%.c=$(BUILD_DIR)%.o)
 
 DEPS                            := $(OBJS:.o=.d)
 
@@ -88,7 +104,9 @@ CLEAN_MLX42_OBJS_MESSAGE        := Library MLX42 objects deleted
 CLEAN_MLX42_MESSAGE             := Library MLX42 deleted
 FCLEAN_MESSAGE                  := So long deleted
 EXE_MESSAGE                     = $(RESET)[100%%] $(GREEN)Built target so_long
+EXE_BONUS_MESSAGE               = [100%%] $(GREEN)Built target so_long_bonus
 COMP_MESSAGE                    = Building C object
+COMP_BONUS                      = $(CYAN)[BONUS]$(RESET) $(YELLOW)Building C object
 
 #******************************************************************************#
 #                               COMPILATION                                    #
@@ -98,9 +116,10 @@ CC                             := cc
 CFLAGS                         = -Wall -Wextra -Werror -Ofast
 CPPFLAGS                       := $(addprefix -I,$(INCS)) -MMD -MP
 DFLAGS                         := -g3
+LFLAGS                         := -march=native
 LDFLAGS                        := $(addprefix -L,$(dir $(LIBS)))
 LDLIBS                         := -lft -lmlx42 -ldl -lglfw -pthread -lm
-COMPILE_OBJS                   = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+COMPILE_OBJS                   = $(CC) $(CFLAGS) $(LFLAGS) $(CPPFLAGS) -c $< -o $@
 COMPILE_EXE                    = $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 #******************************************************************************#
@@ -109,6 +128,13 @@ COMPILE_EXE                    = $(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
 ifdef WITH_DEBUG
 	CFLAGS += $(DFLAGS)
+endif
+
+ifdef WITH_BONUS
+	NAME                       = $(NAME_BONUS)
+	OBJS                       = $(OBJS_BONUS)
+	COMP_MESSAGE               = $(COMP_BONUS)
+	EXE_MESSAGE                = $(EXE_BONUS_MESSAGE)
 endif
 
 #******************************************************************************#
@@ -146,6 +172,10 @@ define submodule_update_libft
 		>/dev/null 2>&1 || true
 	$(SLEEP)
 	$(MAKE) -C $(LIBFT_DIR)
+endef
+
+define bonus
+	$(MAKE) WITH_BONUS=TRUE
 endef
 
 define comp_objs
@@ -202,6 +232,9 @@ $(LIBFT):
 $(MLX42):
 	$(call submodule_update_mlx42)
 
+bonus:
+	$(call bonus)
+
 clean:
 	$(call clean)
 
@@ -213,7 +246,7 @@ re: fclean all
 debug:
 	$(call debug)
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re debug bonus
 .DEFAULT_GOAL := all
 .SILENT:
 
