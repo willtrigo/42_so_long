@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/09 17:18:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:21:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define PLAYER 'P'
 # define COLL 'C'
 # define EXIT_DOOR 'E'
+# define TILE_SIZE_16 16
+# define TILE_SIZE_32 32
+# define TILE_SIZE_64 54
 # define TRUE 1
 # define FALSE 0
 # define BYTE 1
