@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 02:26:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 03:18:03 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	ft_reload_assets(t_canvas *data, mlx_texture_t **texture, \
 	mlx_image_t **canvas)
 {
 	*canvas = mlx_texture_to_image(data->mlx, *texture);
-	mlx_resize_image(*canvas, data->tile_size, data->tile_size);
+	mlx_resize_image(*canvas, data->val_data.tile_size, \
+		data->val_data.tile_size);
 }
 
 static void	ft_load_assets(t_canvas *data, mlx_texture_t **texture, \
@@ -43,5 +44,6 @@ static void	ft_load_assets(t_canvas *data, mlx_texture_t **texture, \
 {
 	*texture = mlx_load_png(path);
 	*canvas = mlx_texture_to_image(data->mlx, *texture);
-	mlx_resize_image(*canvas, data->tile_size, data->tile_size);
+	mlx_resize_image(*canvas, data->val_data.tile_size, \
+		data->val_data.tile_size);
 }

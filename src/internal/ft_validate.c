@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/15 19:54:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 02:49:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
 		*message = ft_strdup("Invalid map - Map doesn't have proportion.");
 	else if (!ft_check_wall(column, data, last_line))
 		*message = ft_strdup("Invalid map - Map is not surrounded by walls.");
-	if (data->line && !last_line)
+	if (data->val_data.line && !last_line)
 		ft_check_elements(column, message, data, -1);
-	else if (last_line && data->player == 0)
+	else if (last_line && data->val_data.player == 0)
 		*message = ft_strdup("Invalid map - Map need at least a player.");
-	else if (last_line && data->exit == 0)
+	else if (last_line && data->val_data.exit == 0)
 		*message = ft_strdup("Invalid map - Map need at least an exit.");
-	else if (last_line && data->coll == 0)
+	else if (last_line && data->val_data.coll == 0)
 		*message = ft_strdup("Invalid map - Map need at least a collectable.");
 }
 
@@ -38,7 +38,7 @@ int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line)
 	int32_t	i;
 
 	i = -1;
-	if (data->line == 0 || last_line == TRUE)
+	if (data->val_data.line == 0 || last_line == TRUE)
 	{
 		while (column[++i])
 		{
@@ -48,16 +48,16 @@ int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line)
 				return (FALSE);
 		}
 	}
-	else if (column[0] != WALL || column[data->column - 2] != WALL)
+	else if (column[0] != WALL || column[data->val_data.column - 2] != WALL)
 		return (FALSE);
 	return (TRUE);
 }
 
 static int8_t	ft_check_map_proportion(char *column, t_canvas *data)
 {
-	if (data->column < COLUMN_MINIMUM)
+	if (data->val_data.column < COLUMN_MINIMUM)
 		return (FALSE);
-	else if ((size_t)data->column != ft_strlen(column))
+	else if ((size_t)data->val_data.column != ft_strlen(column))
 		return (FALSE);
 	return (TRUE);
 }
@@ -68,23 +68,23 @@ static void	ft_check_elements(char *column, char **message, t_canvas *data, \
 	while (column[++i])
 	{
 		if (column[i] == PLAYER)
-			data->player++;
+			data->val_data.player++;
 		else if (column[i] == COLL)
-			data->coll++;
+			data->val_data.coll++;
 		else if (column[i] == EXIT_DOOR)
-			data->exit++;
+			data->val_data.exit++;
 		else if ((column[i] != WALL) && (column[i] != FLOOR) \
 			&& (column[i] != '\n'))
 		{
 			*message = ft_strdup("Invalid map - Invalid char inside the map.");
 			break ;
 		}
-		if (data->player > ELEMENT_MINIMUM)
+		if (data->val_data.player > ELEMENT_MINIMUM)
 		{
 			*message = ft_strdup("Invalid map - Too many players.");
 			break ;
 		}
-		if (data->exit > ELEMENT_MINIMUM)
+		if (data->val_data.exit > ELEMENT_MINIMUM)
 		{
 			*message = ft_strdup("Invalid map - Too many exits.");
 			break ;
