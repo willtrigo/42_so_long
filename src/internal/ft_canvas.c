@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/15 20:14:37 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 02:13:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_create_canvas(char *map)
 	data.render = RENDER_ON;
 	data.delay = 0.0;
 	ft_render_game(&data);
-	mlx_set_icon(data.mlx, data.icon);
 	mlx_key_hook(data.mlx, (mlx_keyfunc)ft_key_hook, &data);
 	mlx_loop_hook(data.mlx, &ft_handle_time, &data);
 	mlx_loop(data.mlx);

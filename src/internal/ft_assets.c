@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/06 05:17:49 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 02:26:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ static void	ft_load_assets(t_canvas *data, mlx_texture_t **texture, \
 void	ft_handle_assets(t_canvas *data)
 {
 	data->icon = mlx_load_png("./textures/assets/42_icon.png");
-	ft_load_assets(data, &data->texture_floor, &data->canvas_floor, \
+	mlx_set_icon(data->mlx, data->icon);
+	ft_load_assets(data, &data->canvas.texture_floor, &data->canvas.floor, \
 		"./textures/floor.png");
-	ft_load_assets(data, &data->texture_wall, &data->canvas_wall, \
+	ft_load_assets(data, &data->canvas.texture_wall, &data->canvas.wall, \
 		"./textures/wall.png");
-	ft_load_assets(data, &data->texture_coll, &data->canvas_coll, \
+	ft_load_assets(data, &data->canvas.texture_coll, &data->canvas.coll, \
 		"./textures/collectable.png");
-	ft_load_assets(data, &data->texture_exit, &data->canvas_exit, \
+	ft_load_assets(data, &data->canvas.texture_exit, &data->canvas.exit, \
 		"./textures/exit.png");
-	ft_load_assets(data, &data->texture_player, &data->canvas_player, \
+	ft_load_assets(data, &data->canvas.texture_player, &data->canvas.player, \
 		"./textures/player.png");
 }
 

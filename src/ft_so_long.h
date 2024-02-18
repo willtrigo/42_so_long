@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/15 20:12:32 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 02:35:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,26 @@ struct s_map
 	int8_t	active;
 };
 
-typedef struct s_canvas		t_canvas;
-struct s_canvas
+typedef struct s_image		t_image;
+struct s_image
 {
-	mlx_t			*mlx;
-	mlx_image_t		*canvas_floor;
-	mlx_image_t		*canvas_wall;
-	mlx_image_t		*canvas_player;
-	mlx_image_t		*canvas_exit;
-	mlx_image_t		*canvas_coll;
+	mlx_image_t		*floor;
+	mlx_image_t		*wall;
+	mlx_image_t		*player;
+	mlx_image_t		*exit;
+	mlx_image_t		*coll;
 	mlx_texture_t	*texture_floor;
 	mlx_texture_t	*texture_wall;
 	mlx_texture_t	*texture_player;
 	mlx_texture_t	*texture_exit;
 	mlx_texture_t	*texture_coll;
+};
+
+typedef struct s_canvas		t_canvas;
+struct s_canvas
+{
+	mlx_t			*mlx;
+	t_image			canvas;
 	mlx_texture_t	*icon;
 	double			delay;
 	int32_t			fd;

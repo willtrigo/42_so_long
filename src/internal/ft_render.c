@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:45:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/15 19:57:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 02:29:18 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ void	ft_handle_texture(t_canvas *data, char canvas, t_map *map_temp, \
 		while (++column < data->column)
 		{
 			if (canvas == FLOOR)
-				ft_render_texture(data, &data->canvas_floor, column, line);
+				ft_render_texture(data, &data->canvas.floor, column, line);
 			if (canvas == WALL && map_temp->chr == WALL)
-				ft_render_texture(data, &data->canvas_wall, column, line);
+				ft_render_texture(data, &data->canvas.wall, column, line);
 			else if (canvas == PLAYER && map_temp->active == TRUE)
-				ft_render_texture(data, &data->canvas_player, column, line);
+				ft_render_texture(data, &data->canvas.player, column, line);
 			else if (canvas == EXIT_DOOR && map_temp->chr == EXIT_DOOR)
-				ft_render_texture(data, &data->canvas_exit, column, line);
+				ft_render_texture(data, &data->canvas.exit, column, line);
 			else if (canvas == COLL && map_temp->enable == TRUE)
-				ft_render_texture(data, &data->canvas_coll, column, line);
+				ft_render_texture(data, &data->canvas.coll, column, line);
 			if (++i != data->line * data->column)
 				map_temp = map_temp->next;
 		}

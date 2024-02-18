@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 07:36:59 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/14 22:35:26 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 02:28:25 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	ft_handle_player_move(t_canvas *data, t_map *player_pos)
 	player_pos->active = TRUE;
 	data->player_pos->active = FALSE;
 	data->player_pos = player_pos;
-	mlx_delete_image(data->mlx, data->canvas_player);
-	ft_reload_assets(data, &data->texture_player, &data->canvas_player);
+	mlx_delete_image(data->mlx, data->canvas.player);
+	ft_reload_assets(data, &data->canvas.texture_player, &data->canvas.player);
 	ft_handle_texture(data, PLAYER, data->map, INIT);
 	data->delay = mlx_get_time() + DELAY;
 }
@@ -62,14 +62,14 @@ static void	ft_check_collectable(t_canvas *data, t_map *player_pos)
 	{
 		data->coll--;
 		player_pos->enable = FALSE;
-		mlx_delete_image(data->mlx, data->canvas_coll);
-		ft_reload_assets(data, &data->texture_coll, &data->canvas_coll);
+		mlx_delete_image(data->mlx, data->canvas.coll);
+		ft_reload_assets(data, &data->canvas.texture_coll, &data->canvas.coll);
 		ft_handle_texture(data, COLL, data->map, INIT);
 	}
 	if (!data->coll)
 	{
 		data->exit_pos->enable = TRUE;
-		ft_reload_assets(data, &data->texture_exit, &data->canvas_exit);
+		ft_reload_assets(data, &data->canvas.texture_exit, &data->canvas.exit);
 		ft_handle_texture(data, EXIT_DOOR, data->map, INIT);
 	}
 }
