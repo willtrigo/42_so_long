@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:57:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 02:27:22 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 07:24:34 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	ft_clean_so_long_struct(t_canvas *data);
 void	ft_clean(t_canvas *data)
 {
 	ft_clean_so_long_assets(data);
+	mlx_delete_image(data->mlx, data->canvas.bg);
 	mlx_delete_image(data->mlx, data->canvas.wall);
 	mlx_delete_image(data->mlx, data->canvas.floor);
 	mlx_delete_image(data->mlx, data->canvas.coll);
@@ -52,6 +53,7 @@ void	ft_clean_map_lst(t_map *map_lst)
 
 static void	ft_clean_so_long_assets(t_canvas *data)
 {
+	mlx_delete_texture(data->canvas.texture_bg);
 	mlx_delete_texture(data->canvas.texture_wall);
 	mlx_delete_texture(data->canvas.texture_floor);
 	mlx_delete_texture(data->canvas.texture_coll);

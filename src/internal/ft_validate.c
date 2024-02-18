@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 07:18:46 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 07:36:23 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,13 @@ void	ft_validate_tile_size(t_canvas *data, char *buf)
 	if (column >= line && column > TILE_SIZE_MAX)
 		data->val_data.tile_size = TILE_SIZE_MAX;
 	else if (column >= line && (column <= TILE_SIZE_MAX \
-		|| column >= TILE_SIZE_MIN))
+		&& column >= TILE_SIZE_MIN))
 		data->val_data.tile_size = line;
 	else if (column < line && line > TILE_SIZE_MAX)
 		data->val_data.tile_size = TILE_SIZE_MAX;
-	else if (column < line && (line <= TILE_SIZE_MAX || line >= TILE_SIZE_MIN))
+	else if (column < line && (line <= TILE_SIZE_MAX && line >= TILE_SIZE_MIN))
 		data->val_data.tile_size = column;
-	if ((column > line && column < TILE_SIZE_MIN) || (column <= line \
-		&& column < TILE_SIZE_MIN))
+	if ((column < TILE_SIZE_MIN) || (line < TILE_SIZE_MIN))
 	{
 		free(buf);
 		ft_output_error("Invalid so long - Map file is too long.");
