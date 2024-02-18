@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 03:18:49 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 04:36:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_parse_map(char *map, t_canvas *data)
 	ft_parse_buf(&buf, data, NULL, NULL);
 	close(data->val_data.fd);
 	data->val_data.column--;
+	ft_validate_tile_size(data, buf);
 	while (buf[++i])
 		if (buf[i] != '\n')
 			ft_node_map_add(&data->map, ft_node_map_new(buf[i]));

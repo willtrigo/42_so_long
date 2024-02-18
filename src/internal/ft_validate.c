@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 02:49:18 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 07:18:46 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,32 @@ int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line)
 	else if (column[0] != WALL || column[data->val_data.column - 2] != WALL)
 		return (FALSE);
 	return (TRUE);
+}
+
+void	ft_validate_tile_size(t_canvas *data, char *buf)
+{
+	const int32_t	column = (WIDTH - TILE_SIZE_MAX) / data->val_data.column;
+	const int32_t	line = (HEIGHT - TILE_SIZE_MAX) / data->val_data.line;
+
+	if (column >= line && column > TILE_SIZE_MAX)
+		data->val_data.tile_size = TILE_SIZE_MAX;
+	else if (column >= line && (column <= TILE_SIZE_MAX \
+		|| column >= TILE_SIZE_MIN))
+		data->val_data.tile_size = line;
+	else if (column < line && line > TILE_SIZE_MAX)
+		data->val_data.tile_size = TILE_SIZE_MAX;
+	else if (column < line && (line <= TILE_SIZE_MAX || line >= TILE_SIZE_MIN))
+		data->val_data.tile_size = column;
+	if ((column > line && column < TILE_SIZE_MIN) || (column <= line \
+		&& column < TILE_SIZE_MIN))
+	{
+		free(buf);
+		ft_output_error("Invalid so long - Map file is too long.");
+	}
+	data->val_data.offset_x = (WIDTH - data->val_data.tile_size \
+		* data->val_data.column) / 2;
+	data->val_data.offset_y = (HEIGHT - data->val_data.tile_size \
+		* data->val_data.line) / 2;
 }
 
 static int8_t	ft_check_map_proportion(char *column, t_canvas *data)

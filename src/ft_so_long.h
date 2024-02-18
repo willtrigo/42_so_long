@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 03:47:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 05:25:05 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ struct s_validation
 	int32_t	line;
 	int32_t	move;
 	int16_t	coll;
+	int16_t	offset_x;
+	int16_t	offset_y;
 	int8_t	tile_size;
 	int8_t	player;
 	int8_t	exit;

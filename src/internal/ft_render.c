@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:45:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 04:10:55 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 05:38:43 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void	ft_handle_texture_bg(t_canvas *data)
 static void	ft_render_texture(t_canvas *data, mlx_image_t **canvas, \
 	int16_t column, int16_t line)
 {
-	mlx_image_to_window(data->mlx, *canvas, column * data->val_data.tile_size, \
-		line * data->val_data.tile_size);
+	mlx_image_to_window(data->mlx, *canvas, column * data->val_data.tile_size \
+		+ data->val_data.offset_x, line * data->val_data.tile_size \
+		+ data->val_data.offset_y);
 }
