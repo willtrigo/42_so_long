@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 03:32:25 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 03:47:42 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ struct s_map
 typedef struct s_image		t_image;
 struct s_image
 {
+	mlx_image_t		*bg;
 	mlx_image_t		*floor;
 	mlx_image_t		*wall;
 	mlx_image_t		*player;
 	mlx_image_t		*exit;
 	mlx_image_t		*coll;
+	mlx_texture_t	*texture_bg;
 	mlx_texture_t	*texture_floor;
 	mlx_texture_t	*texture_wall;
 	mlx_texture_t	*texture_player;

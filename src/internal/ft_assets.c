@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 03:18:03 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 03:49:33 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_handle_assets(t_canvas *data)
 {
 	data->icon = mlx_load_png("./textures/assets/42_icon.png");
 	mlx_set_icon(data->mlx, data->icon);
+	ft_load_assets(data, &data->canvas.texture_bg, &data->canvas.bg, \
+		"./textures/bg0.png");
 	ft_load_assets(data, &data->canvas.texture_floor, &data->canvas.floor, \
 		"./textures/floor.png");
 	ft_load_assets(data, &data->canvas.texture_wall, &data->canvas.wall, \
