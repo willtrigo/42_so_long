@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:45:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/11 15:10:25 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/15 19:57:27 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 static void	ft_render_texture(t_canvas *data, mlx_image_t **canvas, \
 	int16_t column, int16_t line);
+
+void	ft_handle_time(void *param)
+{
+	t_canvas	*data;
+
+	data = (t_canvas *)param;
+	if (mlx_get_time() > data->delay)
+		data->render = RENDER_OFF;
+}
 
 void	ft_render_game(t_canvas *data)
 {

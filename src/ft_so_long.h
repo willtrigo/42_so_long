@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/12 18:21:18 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:12:32 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # define ROT3 3
 # define CYAN 0
 # define GREEN 2
+# define DELAY 0.13
+# define RENDER_ON 0X01
+# define RENDER_OFF 0X00
 
 typedef struct s_map		t_map;
 struct s_map
@@ -64,6 +67,7 @@ struct s_canvas
 	mlx_texture_t	*texture_exit;
 	mlx_texture_t	*texture_coll;
 	mlx_texture_t	*icon;
+	double			delay;
 	int32_t			fd;
 	int32_t			column;
 	int32_t			line;
@@ -72,6 +76,7 @@ struct s_canvas
 	int8_t			tile_size;
 	int8_t			player;
 	int8_t			exit;
+	int8_t			render;
 	t_map			*map;
 	t_map			*player_pos;
 	t_map			*exit_pos;
