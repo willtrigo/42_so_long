@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 04:19:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 03:30:17 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/18 03:32:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_val_data_init(t_canvas *data)
 	data->val_data.player = 0;
 	data->val_data.exit = 0;
 	data->val_data.coll = 0;
-	data->val_data.tile_size = TILE_SIZE_64;
+	data->val_data.tile_size = TILE_SIZE_MAX;
 	data->val_data.move = 0;
 	data->val_data.fd = 0;
 }
