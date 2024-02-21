@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 05:21:42 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:20:57 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_handle_assets(t_canvas *data)
 	ft_load_assets(data, &data->canvas.texture_floor, &data->canvas.floor, \
 		"./textures/floor.png");
 	ft_load_assets(data, &data->canvas.texture_wall, &data->canvas.wall, \
-		"./textures/wall.png");
+		"./textures/wall0.png");
 	ft_load_assets(data, &data->canvas.texture_coll, &data->canvas.coll, \
-		"./textures/collectable.png");
+		"./textures/collectable0.png");
 	ft_load_assets(data, &data->canvas.texture_exit, &data->canvas.exit, \
 		"./textures/exit.png");
 	ft_load_assets(data, &data->canvas.texture_player, &data->canvas.player, \
