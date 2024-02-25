@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:57:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/13 20:08:38 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/24 22:58:49 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ static void	ft_clean_so_long_struct(t_canvas *data);
 void	ft_clean(t_canvas *data)
 {
 	ft_clean_so_long_assets(data);
-	mlx_delete_image(data->mlx, data->canvas_wall);
-	mlx_delete_image(data->mlx, data->canvas_floor);
-	mlx_delete_image(data->mlx, data->canvas_coll);
-	mlx_delete_image(data->mlx, data->canvas_exit);
-	mlx_delete_image(data->mlx, data->canvas_player);
+	mlx_delete_image(data->mlx, data->canvas.bg);
+	mlx_delete_image(data->mlx, data->canvas.wall);
+	mlx_delete_image(data->mlx, data->canvas.floor);
+	mlx_delete_image(data->mlx, data->canvas.coll);
+	mlx_delete_image(data->mlx, data->canvas.exit);
+	mlx_delete_image(data->mlx, data->canvas.player);
 	ft_clean_so_long_struct(data);
 }
 
@@ -52,11 +53,12 @@ void	ft_clean_map_lst(t_map *map_lst)
 
 static void	ft_clean_so_long_assets(t_canvas *data)
 {
-	mlx_delete_texture(data->texture_wall);
-	mlx_delete_texture(data->texture_floor);
-	mlx_delete_texture(data->texture_coll);
-	mlx_delete_texture(data->texture_exit);
-	mlx_delete_texture(data->texture_player);
+	mlx_delete_texture(data->canvas.texture_bg);
+	mlx_delete_texture(data->canvas.texture_wall);
+	mlx_delete_texture(data->canvas.texture_floor);
+	mlx_delete_texture(data->canvas.texture_coll);
+	mlx_delete_texture(data->canvas.texture_exit);
+	mlx_delete_texture(data->canvas.texture_player);
 	mlx_delete_texture(data->icon);
 }
 

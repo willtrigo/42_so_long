@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 07:32:11 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/13 20:10:01 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/24 23:24:31 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ void	ft_parse_map(char *map, t_canvas *data)
 	buf = NULL;
 	i = -1;
 	map_size = 0;
-	data->fd = open(map, O_RDONLY, 0666);
-	if (data->fd <= FAIL)
-		ft_read_output_error(data->fd, "Invalid map - Map file is corrupted.");
+	data->val_data.fd = open(map, O_RDONLY, 0666);
+	if (data->val_data.fd <= FAIL)
+		ft_read_output_error(data->val_data.fd, \
+			"Invalid map - Map file is corrupted.");
 	ft_parse_buf(&buf, data, NULL, NULL);
-	close(data->fd);
-	data->column--;
+	close(data->val_data.fd);
+	data->val_data.column--;
+	ft_validate_tile_size(data, buf);
 	while (buf[++i])
 		if (buf[i] != '\n')
 			ft_node_map_add(&data->map, ft_node_map_new(buf[i]));
@@ -74,9 +76,9 @@ static void	ft_parse_buf(char **buf, t_canvas *data, char *check_map, \
 	char	*check_map_valid;
 
 	check_map_valid = NULL;
-	*buf = get_next_line(data->fd);
+	*buf = get_next_line(data->val_data.fd);
 	check_map = ft_strdup("");
-	data->column = ft_strlen(*buf);
+	data->val_data.column = ft_strlen(*buf);
 	while (*buf)
 	{
 		ft_is_map_valid(*buf, &check_map_valid, data, FALSE);
@@ -85,14 +87,14 @@ static void	ft_parse_buf(char **buf, t_canvas *data, char *check_map, \
 		free(check_map_temp);
 		free(*buf);
 		if (check_map_valid)
-			ft_clean_buf(data->fd, check_map, check_map_valid);
-		*buf = get_next_line(data->fd);
-		data->line++;
+			ft_clean_buf(data->val_data.fd, check_map, check_map_valid);
+		*buf = get_next_line(data->val_data.fd);
+		data->val_data.line++;
 	}
-	ft_is_map_valid(&check_map[data->line * data->column - data->column], \
-		&check_map_valid, data, TRUE);
+	ft_is_map_valid(&check_map[data->val_data.line * data->val_data.column \
+		- data->val_data.column], &check_map_valid, data, TRUE);
 	if (check_map_valid)
-		ft_clean_buf(data->fd, check_map, check_map_valid);
+		ft_clean_buf(data->val_data.fd, check_map, check_map_valid);
 	*buf = ft_strdup(check_map);
 	free(check_map);
 }
@@ -102,7 +104,7 @@ static void	ft_build_map_lst(t_canvas *data, int32_t map_size, t_map *map)
 	int32_t	map_pos;
 
 	map_pos = 0;
-	if (map_size != data->column * data->line)
+	if (map_size != data->val_data.column * data->val_data.line)
 	{
 		ft_clean_map_lst(data->map);
 		ft_output_error("Invalid map - Map allocation failed.");
@@ -110,9 +112,9 @@ static void	ft_build_map_lst(t_canvas *data, int32_t map_size, t_map *map)
 	while (map)
 	{
 		ft_check_tile(map, data);
-		map->down = ft_get_pos(map, data->column);
-		if (map_pos > data->column - 2)
-			map->up = ft_get_pos(data->map, map_pos - data->column);
+		map->down = ft_get_pos(map, data->val_data.column);
+		if (map_pos > data->val_data.column - 2)
+			map->up = ft_get_pos(data->map, map_pos - data->val_data.column);
 		if (map_pos != 0)
 			map->prev = ft_get_pos(data->map, map_pos - 1);
 		map_pos++;

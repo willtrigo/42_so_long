@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/13 20:08:03 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/24 23:01:53 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@ static void	ft_load_assets(t_canvas *data, mlx_texture_t **texture, \
 void	ft_handle_assets(t_canvas *data)
 {
 	data->icon = mlx_load_png("./textures/assets/42_icon.png");
-	ft_load_assets(data, &data->texture_floor, &data->canvas_floor, \
+	mlx_set_icon(data->mlx, data->icon);
+	ft_load_assets(data, &data->canvas.texture_bg, &data->canvas.bg, \
+		"./textures/bg0.png");
+	ft_load_assets(data, &data->canvas.texture_floor, &data->canvas.floor, \
 		"./textures/floor.png");
-	ft_load_assets(data, &data->texture_wall, &data->canvas_wall, \
-		"./textures/wall.png");
-	ft_load_assets(data, &data->texture_coll, &data->canvas_coll, \
-		"./textures/collectable.png");
-	ft_load_assets(data, &data->texture_exit, &data->canvas_exit, \
+	ft_load_assets(data, &data->canvas.texture_wall, &data->canvas.wall, \
+		"./textures/wall0.png");
+	ft_load_assets(data, &data->canvas.texture_coll, &data->canvas.coll, \
+		"./textures/collectable0.png");
+	ft_load_assets(data, &data->canvas.texture_exit, &data->canvas.exit, \
 		"./textures/exit.png");
-	ft_load_assets(data, &data->texture_player, &data->canvas_player, \
+	ft_load_assets(data, &data->canvas.texture_player, &data->canvas.player, \
 		"./textures/player.png");
 }
 
@@ -34,7 +37,11 @@ void	ft_reload_assets(t_canvas *data, mlx_texture_t **texture, \
 	mlx_image_t **canvas)
 {
 	*canvas = mlx_texture_to_image(data->mlx, *texture);
-	mlx_resize_image(*canvas, data->tile_size, data->tile_size);
+	if (*canvas == data->canvas.bg)
+		mlx_resize_image(*canvas, TILE_SIZE_MAX, TILE_SIZE_MAX);
+	else
+		mlx_resize_image(*canvas, data->val_data.tile_size, \
+			data->val_data.tile_size);
 }
 
 static void	ft_load_assets(t_canvas *data, mlx_texture_t **texture, \
@@ -42,5 +49,9 @@ static void	ft_load_assets(t_canvas *data, mlx_texture_t **texture, \
 {
 	*texture = mlx_load_png(path);
 	*canvas = mlx_texture_to_image(data->mlx, *texture);
-	mlx_resize_image(*canvas, data->tile_size, data->tile_size);
+	if (*canvas == data->canvas.bg)
+		mlx_resize_image(*canvas, TILE_SIZE_MAX, TILE_SIZE_MAX);
+	else
+		mlx_resize_image(*canvas, data->val_data.tile_size, \
+			data->val_data.tile_size);
 }

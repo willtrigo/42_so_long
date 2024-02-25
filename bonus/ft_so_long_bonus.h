@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/13 20:05:27 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:21:59 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # define PLAYER 'P'
 # define COLL 'C'
 # define EXIT_DOOR 'E'
-# define TILE_SIZE_16 16
-# define TILE_SIZE_32 32
-# define TILE_SIZE_64 54
+# define TRAP 'T'
+# define TILE_SIZE_MIN 16
+# define TILE_SIZE_MAX 64
 # define TRUE 1
 # define FALSE 0
 # define BYTE 1
@@ -36,6 +36,9 @@
 # define ROT3 3
 # define CYAN 0
 # define GREEN 2
+# define DELAY 0.13
+# define RENDER_ON 0X01
+# define RENDER_OFF 0X00
 
 typedef struct s_map		t_map;
 struct s_map
@@ -49,29 +52,56 @@ struct s_map
 	int8_t	active;
 };
 
-typedef struct s_canvas		t_canvas;
-struct s_canvas
+typedef struct s_image		t_image;
+struct s_image
 {
-	mlx_t			*mlx;
-	mlx_image_t		*canvas_floor;
-	mlx_image_t		*canvas_wall;
-	mlx_image_t		*canvas_player;
-	mlx_image_t		*canvas_exit;
-	mlx_image_t		*canvas_coll;
+	mlx_image_t		*bg;
+	mlx_image_t		*floor;
+	mlx_image_t		*wall;
+	mlx_image_t		*player;
+	mlx_image_t		*exit;
+	mlx_image_t		*coll;
+	mlx_image_t		*trap;
+	mlx_texture_t	*texture_bg;
 	mlx_texture_t	*texture_floor;
 	mlx_texture_t	*texture_wall;
 	mlx_texture_t	*texture_player;
 	mlx_texture_t	*texture_exit;
 	mlx_texture_t	*texture_coll;
+	mlx_texture_t	*texture_trap;
+};
+
+typedef struct s_validation	t_validation;
+struct s_validation
+{
+	double	delay;
+	int32_t	fd;
+	int32_t	column;
+	int32_t	line;
+	int32_t	move;
+	int16_t	coll;
+	int16_t	offset_x;
+	int16_t	offset_y;
+	int8_t	tile_size;
+	int8_t	player;
+	int8_t	exit;
+	int8_t	render;
+};
+
+typedef struct s_time		t_time;
+struct s_time
+{
+	double	delay;
+};
+
+typedef struct s_canvas		t_canvas;
+struct s_canvas
+{
+	mlx_t			*mlx;
 	mlx_texture_t	*icon;
-	int32_t			fd;
-	int32_t			column;
-	int32_t			line;
-	int32_t			move;
-	int16_t			coll;
-	int8_t			tile_size;
-	int8_t			player;
-	int8_t			exit;
+	t_image			canvas;
+	t_validation	val_data;
+	t_time			time;
 	t_map			*map;
 	t_map			*player_pos;
 	t_map			*exit_pos;
