@@ -6,31 +6,31 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:28 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/21 11:24:09 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 05:14:11 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/ft_validate_bonus.h"
 
 static int8_t	ft_check_map_proportion(char *column, t_canvas *data);
-static void		ft_check_elements(char *column, char **message, \
+static void		ft_check_elements(char *column, char **msg, \
 	t_canvas *data, int32_t i);
 
-void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
+void	ft_is_map_valid(char *column, char **msg, t_canvas *data, \
 	int8_t last_line)
 {
 	if (!ft_check_map_proportion(column, data))
-		*message = ft_strdup("Invalid map - Map doesn't have proportion.");
+		*msg = ft_strdup("Invalid map - Map doesn't have proportion.");
 	else if (!ft_check_wall(column, data, last_line))
-		*message = ft_strdup("Invalid map - Map is not surrounded by walls.");
+		*msg = ft_strdup("Invalid map - Map is not surrounded by walls.");
 	if (data->val_data.line && !last_line)
-		ft_check_elements(column, message, data, -1);
+		ft_check_elements(column, msg, data, -1);
 	else if (last_line && data->val_data.player == 0)
-		*message = ft_strdup("Invalid map - Map need at least a player.");
+		*msg = ft_strdup("Invalid map - Map need at least a player.");
 	else if (last_line && data->val_data.exit == 0)
-		*message = ft_strdup("Invalid map - Map need at least an exit.");
+		*msg = ft_strdup("Invalid map - Map need at least an exit.");
 	else if (last_line && data->val_data.coll == 0)
-		*message = ft_strdup("Invalid map - Map need at least a collectable.");
+		*msg = ft_strdup("Invalid map - Map need at least a collectable.");
 }
 
 int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line)
@@ -87,7 +87,7 @@ static int8_t	ft_check_map_proportion(char *column, t_canvas *data)
 	return (TRUE);
 }
 
-static void	ft_check_elements(char *column, char **message, t_canvas *data, \
+static void	ft_check_elements(char *column, char **msg, t_canvas *data, \
 	int32_t i)
 {
 	while (column[++i])
@@ -99,19 +99,19 @@ static void	ft_check_elements(char *column, char **message, t_canvas *data, \
 		else if (column[i] == EXIT_DOOR)
 			data->val_data.exit++;
 		else if ((column[i] != WALL) && (column[i] != FLOOR) \
-			&& (column[i] != '\n'))
+			&& (column[i] != TRAP) && (column[i] != '\n'))
 		{
-			*message = ft_strdup("Invalid map - Invalid char inside the map.");
+			*msg = ft_strdup("Invalid map - Invalid char inside the map.");
 			break ;
 		}
 		if (data->val_data.player > ELEMENT_MINIMUM)
 		{
-			*message = ft_strdup("Invalid map - Too many players.");
+			*msg = ft_strdup("Invalid map - Too many players.");
 			break ;
 		}
 		if (data->val_data.exit > ELEMENT_MINIMUM)
 		{
-			*message = ft_strdup("Invalid map - Too many exits.");
+			*msg = ft_strdup("Invalid map - Too many exits.");
 			break ;
 		}
 	}

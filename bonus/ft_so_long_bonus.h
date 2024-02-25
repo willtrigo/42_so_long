@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/25 01:41:02 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 06:07:15 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,16 @@ struct s_image
 	mlx_image_t		*coll;
 	mlx_image_t		*trap;
 	mlx_image_t		*info;
-	mlx_texture_t	*texture_bg;
+	mlx_texture_t	*texture_bg0;
+	mlx_texture_t	*texture_bg1;
+	mlx_texture_t	*texture_bg2;
+	mlx_texture_t	*texture_bg3;
 	mlx_texture_t	*texture_floor;
 	mlx_texture_t	*texture_wall;
 	mlx_texture_t	*texture_player;
 	mlx_texture_t	*texture_exit;
 	mlx_texture_t	*texture_coll;
-	mlx_texture_t	*texture_trap;
+	mlx_texture_t	*texture_trap1;
 	mlx_texture_t	*texture_info;
 };
 

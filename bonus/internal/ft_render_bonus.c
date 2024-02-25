@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:45:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/25 04:22:48 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 06:06:35 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ void	ft_render_game(t_canvas *data)
 	ft_handle_texture(data, FLOOR, data->map, INIT);
 	ft_handle_texture(data, WALL, data->map, INIT);
 	ft_handle_texture(data, COLL, data->map, INIT);
+	ft_handle_texture(data, TRAP, data->map, INIT);
 	ft_handle_texture(data, PLAYER, data->map, INIT);
 	mlx_image_to_window(data->mlx, data->canvas.info, 0, HEIGHT - 33);
-	ft_output_message("Number of movements - ", "0", CYAN, data);
+	ft_output_msg("Number of movements - ", "0", CYAN, data);
 }
 
 void	ft_handle_texture(t_canvas *data, char canvas, t_map *map_temp, \
@@ -48,7 +49,7 @@ void	ft_handle_texture(t_canvas *data, char canvas, t_map *map_temp, \
 		column = -1;
 		while (++column < data->val_data.column)
 		{
-			if (canvas == FLOOR)
+			if (canvas == FLOOR && map_temp->chr != TRAP)
 				ft_render_texture(data, &data->canvas.floor, column, line);
 			if (canvas == WALL && map_temp->chr == WALL)
 				ft_render_texture(data, &data->canvas.wall, column, line);
@@ -58,6 +59,8 @@ void	ft_handle_texture(t_canvas *data, char canvas, t_map *map_temp, \
 				ft_render_texture(data, &data->canvas.exit, column, line);
 			else if (canvas == COLL && map_temp->enable == TRUE)
 				ft_render_texture(data, &data->canvas.coll, column, line);
+			else if (canvas == TRAP && map_temp->chr == TRAP)
+				ft_render_texture(data, &data->canvas.trap, column, line);
 			if (++i != data->val_data.line * data->val_data.column)
 				map_temp = map_temp->next;
 		}

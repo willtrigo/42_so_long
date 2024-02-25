@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:25:21 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/21 11:23:10 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 05:09:55 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define COLUMN_MINIMUM 3
 # define ELEMENT_MINIMUM 1
 
-void	ft_is_map_valid(char *column, char **message, t_canvas *data, \
+void	ft_is_map_valid(char *column, char **msg, t_canvas *data, \
 			int8_t last_line);
 int8_t	ft_check_wall(char *column, t_canvas *data, int8_t last_line);
 void	ft_validate_tile_size(t_canvas *data, char *buf);

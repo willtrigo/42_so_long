@@ -6,23 +6,24 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 05:57:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/13 20:09:24 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 06:05:56 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/ft_flood_fill_bonus.h"
 
 static void	ft_rot3(t_map *map, int8_t shift);
-static void	ft_flood_fill_error(t_canvas *data, char *message);
+static void	ft_flood_fill_error(t_canvas *data, char *msg);
 
 void	ft_flood_fill(t_map *map_pos, int8_t shift)
 {
 	if ((shift == RIGHT) && (map_pos->chr == PLAYER || map_pos->chr == FLOOR \
-		|| map_pos->chr == COLL || map_pos->chr == EXIT_DOOR))
+		|| map_pos->chr == COLL || map_pos->chr == EXIT_DOOR \
+		|| map_pos->chr == TRAP))
 		ft_rot3(map_pos, shift);
 	else if ((shift == LEFT) && (map_pos->chr == (PLAYER + ROT3) \
 		|| map_pos->chr == (FLOOR + ROT3) || map_pos->chr == (COLL + ROT3) \
-		|| map_pos->chr == (EXIT_DOOR + ROT3)))
+		|| map_pos->chr == (EXIT_DOOR + ROT3) || map_pos->chr == (TRAP + ROT3)))
 		ft_rot3(map_pos, shift);
 }
 
@@ -63,8 +64,8 @@ void	ft_check_flood_fill(t_canvas *data, int16_t collectable, \
 		ft_flood_fill_error(data, "Invalid map - Exit has no valid path.");
 }
 
-static void	ft_flood_fill_error(t_canvas *data, char *message)
+static void	ft_flood_fill_error(t_canvas *data, char *msg)
 {
 	ft_clean_map_lst(data->map);
-	ft_output_error(message);
+	ft_output_error(msg);
 }
