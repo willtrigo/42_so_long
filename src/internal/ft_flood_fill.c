@@ -6,14 +6,14 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 05:57:19 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 07:43:01 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 05:09:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "internal/ft_flood_fill.h"
 
 static void	ft_rot3(t_map *map, int8_t shift);
-static void	ft_flood_fill_error(t_canvas *data, char *message);
+static void	ft_flood_fill_error(t_canvas *data, char *msg);
 
 void	ft_flood_fill(t_map *map_pos, int8_t shift)
 {
@@ -63,8 +63,8 @@ static void	ft_rot3(t_map *map, int8_t shift)
 		ft_flood_fill(map->prev, shift);
 }
 
-static void	ft_flood_fill_error(t_canvas *data, char *message)
+static void	ft_flood_fill_error(t_canvas *data, char *msg)
 {
 	ft_clean_map_lst(data->map);
-	ft_output_error(message);
+	ft_output_error(msg);
 }

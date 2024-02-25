@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:57:47 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/18 07:24:34 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 05:09:29 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	ft_clean(t_canvas *data)
 	ft_clean_so_long_struct(data);
 }
 
-void	ft_clean_buf(int32_t fd, char *check_map, char *message)
+void	ft_clean_buf(int32_t fd, char *check_map, char *msg)
 {
 	close(fd);
 	free(check_map);
-	ft_output_error_message(message);
-	free(message);
+	ft_output_error_msg(msg);
+	free(msg);
 	ft_exit_error();
 }
 
