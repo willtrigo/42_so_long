@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:00:37 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/21 11:21:59 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 01:41:02 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ struct s_image
 	mlx_image_t		*exit;
 	mlx_image_t		*coll;
 	mlx_image_t		*trap;
+	mlx_image_t		*info;
 	mlx_texture_t	*texture_bg;
 	mlx_texture_t	*texture_floor;
 	mlx_texture_t	*texture_wall;
@@ -69,6 +70,7 @@ struct s_image
 	mlx_texture_t	*texture_exit;
 	mlx_texture_t	*texture_coll;
 	mlx_texture_t	*texture_trap;
+	mlx_texture_t	*texture_info;
 };
 
 typedef struct s_validation	t_validation;
@@ -99,6 +101,7 @@ struct s_canvas
 {
 	mlx_t			*mlx;
 	mlx_texture_t	*icon;
+	mlx_image_t		*info_count;
 	t_image			canvas;
 	t_validation	val_data;
 	t_time			time;

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:45:07 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/21 11:25:08 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 01:16:16 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "MLX42/MLX42.h"
 # include "ft_so_long_bonus.h"
+# include "internal/ft_utils_bonus.h"
 
 # define INIT 0
 

@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 07:36:59 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/24 23:23:03 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 02:29:41 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	ft_handle_player_move(t_canvas *data, t_map *player_pos)
 
 	data->val_data.render = RENDER_ON;
 	count_move = ft_itoa(++data->val_data.move);
-	ft_output_message("Number of movements", count_move, CYAN);
+	mlx_delete_image(data->mlx, data->info_count);
+	ft_output_message("Number of movements - ", count_move, CYAN, data);
 	free(count_move);
 	ft_check_collectable(data, player_pos);
 	ft_check_exit(data, player_pos);
@@ -78,7 +79,7 @@ static void	ft_check_exit(t_canvas *data, t_map *player_pos)
 {
 	if (data->exit_pos->enable && player_pos->chr == EXIT_DOOR)
 	{
-		ft_output_message("Humanity restored", "You won.", GREEN);
+		ft_output_message("Humanity restored", "You won.", GREEN, data);
 		mlx_close_window(data->mlx);
 		return ;
 	}

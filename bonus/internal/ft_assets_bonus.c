@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 04:02:22 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/24 23:01:53 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 01:49:24 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	ft_handle_assets(t_canvas *data)
 		"./textures/exit.png");
 	ft_load_assets(data, &data->canvas.texture_player, &data->canvas.player, \
 		"./textures/player.png");
+	data->canvas.texture_info = mlx_load_png("./textures/info.png");
+	data->canvas.info = mlx_texture_to_image(data->mlx, \
+		data->canvas.texture_info);
 }
 
 void	ft_reload_assets(t_canvas *data, mlx_texture_t **texture, \

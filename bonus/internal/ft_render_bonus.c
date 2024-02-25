@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:45:02 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/21 11:26:00 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 04:22:48 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_render_game(t_canvas *data)
 	ft_handle_texture(data, WALL, data->map, INIT);
 	ft_handle_texture(data, COLL, data->map, INIT);
 	ft_handle_texture(data, PLAYER, data->map, INIT);
+	mlx_image_to_window(data->mlx, data->canvas.info, 0, HEIGHT - 33);
+	ft_output_message("Number of movements - ", "0", CYAN, data);
 }
 
 void	ft_handle_texture(t_canvas *data, char canvas, t_map *map_temp, \

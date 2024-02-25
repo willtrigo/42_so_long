@@ -6,7 +6,7 @@
 /*   By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 03:45:09 by dande-je          #+#    #+#             */
-/*   Updated: 2024/02/13 20:10:44 by dande-je         ###   ########.fr       */
+/*   Updated: 2024/02/25 04:24:00 by dande-je         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,23 @@ void	ft_exit_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_output_message(char *title, char *message, int8_t color)
+void	ft_output_message(char *title, char *message, int8_t color, \
+			t_canvas *data)
 {
-	if (color == CYAN)
-		ft_putstr_fd("\033[0;36m", STDOUT_FILENO);
-	else if (color == GREEN)
+	char	*message_temp;
+
+	if (color == GREEN)
+	{
 		ft_putstr_fd("\033[0;32m", STDOUT_FILENO);
-	ft_putstr_fd(title, STDOUT_FILENO);
-	ft_putstr_fd("\033[0m - ", STDOUT_FILENO);
-	ft_putstr_fd(message, STDOUT_FILENO);
-	ft_putstr_fd("\n", STDOUT_FILENO);
+		ft_putstr_fd(title, STDOUT_FILENO);
+		ft_putstr_fd("\033[0m - ", STDOUT_FILENO);
+		ft_putstr_fd(message, STDOUT_FILENO);
+		ft_putstr_fd("\n", STDOUT_FILENO);
+	}
+	else if (color == CYAN)
+	{
+		message_temp = ft_strjoin(title, message);
+		data->info_count = mlx_put_string(data->mlx, message_temp, 5, HEIGHT - 27);
+		free(message_temp);
+	}
 }
