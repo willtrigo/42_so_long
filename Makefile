@@ -6,7 +6,7 @@
 #    By: dande-je <dande-je@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 03:46:51 by dande-je          #+#    #+#              #
-#    Updated: 2024/02/25 02:26:38 by dande-je         ###   ########.fr        #
+#    Updated: 2024/02/25 04:48:25 by dande-je         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -210,6 +210,7 @@ endef
 define debug
 	$(call clean)
 	$(call fclean)
+	$(MAKE) WITH_DEBUG=TRUE
 	$(MAKE) WITH_DEBUG=TRUE WITH_BONUS=TRUE
 endef
 
